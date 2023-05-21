@@ -1,12 +1,13 @@
 const path = require("path");
 
 const config = {
-  entry: "./src",
+  // default get index.js
+  // absolute path!!!!
+  entry: "./src/js",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "../dist"),
     filename: "bundle.js",
   },
-  mode: "production",
 };
 
 module.exports = config;
