@@ -4,6 +4,7 @@ import {
   toggleTodoEventListener,
   onLoadEventHandler,
 } from "./event-handlers";
+import "../styles/index.css";
 
 window.addEventListener("load", onLoadEventHandler);
 document.addEventListener("change", function (event) {
@@ -19,3 +20,5 @@ document.addEventListener("click", function (event) {
     toggleTodoEventListener(event);
   }
 });
+
+console.log("hello");
