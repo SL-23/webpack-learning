@@ -20,5 +20,3 @@ document.addEventListener("click", function (event) {
     toggleTodoEventListener(event);
   }
 });
-
-console.log("hello");

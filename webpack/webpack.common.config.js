@@ -6,6 +6,10 @@ const config = {
   entry: "./src/js",
   output: {
     path: path.resolve(__dirname, "../dist"),
+    clean: {
+      // dry: true, // just tell you what will be done, not doing anything
+      keep: /\.css/,
+    },
   },
   module: {
     rules: [
