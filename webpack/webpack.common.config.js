@@ -29,7 +29,12 @@ const config = {
       filename: "index.html",
       template: "src/template.html",
     }),
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: [
+        "**/*",
+        path.join(process.cwd(), "build/**/*"),
+      ],
+    }),
   ],
 };
 
