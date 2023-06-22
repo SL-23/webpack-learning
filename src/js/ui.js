@@ -1,4 +1,6 @@
 import initialData from "./todos.json";
+import styles from "../styles/notification.module.css";
+
 let data = initialData;
 
 export function getAllTodos() {
@@ -42,6 +44,7 @@ export function renderTodos(todos) {
 
 export function clearNewTodoInput() {
   document.querySelector(".new-todo").value = "";
+  showNotification();
 }
 
 export function getTodoId(element) {
@@ -51,4 +54,18 @@ export function getTodoId(element) {
       element.parentNode.parentNode.dataset.id,
     10
   );
+}
+
+function showNotification() {
+  const notification = `<div class="${styles.notification}">
+  To do item added
+  </div>`;
+
+  document.body.innerHTML += notification;
+  setTimeout(function () {
+    const notificationElement = document.querySelector(
+      `.${styles.notification}`
+    );
+    notificationElement.parentNode.removeChild(notificationElement);
+  }, 2000);
 }

@@ -24,7 +24,25 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.css$/,
+        exclude: /\.module\.css$/,
         use: ["style-loader", "css-loader"],
+      },
+      {
+        // CONFIG: https://www.npmjs.com/package/css-loader
+        test: /\.css$/,
+        include: /\.module\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: {
+                // make it readable in dev mode
+                localIdentName: "[local]--[md4:hash:7]",
+              },
+            },
+          },
+        ],
       },
     ],
   },
