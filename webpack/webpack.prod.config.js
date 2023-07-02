@@ -67,6 +67,33 @@ module.exports = merge(common, {
           "sass-loader",
         ],
       },
+      {
+        test: /\.(png|jpg|svg)$/,
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 10 * 1024,
+          },
+        },
+        generator: {
+          // hash content with 12 chars
+          filename: "./images/[name].[contenthash:12][ext]",
+        },
+        use: [
+          {
+            loader: "image-webpack-loader",
+            options: {
+              mozjpeg: {
+                quality: 40,
+              },
+              pngquant: {
+                quality: [0.65, 0.9],
+                speed: 4,
+              },
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
