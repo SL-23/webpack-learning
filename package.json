@@ -6,7 +6,8 @@
   "scripts": {
     "build": "cross-env BABEL_ENV=production npx webpack --config webpack/webpack.prod.config.js",
     "dev": " cross-env BABEL_ENV=dev npx webpack serve --config webpack/webpack.dev.config.js --hot",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
     "@babel/core": "^7.22.5",
     "@babel/plugin-proposal-pipeline-operator": "^7.22.5",
     "@babel/preset-env": "^7.22.5",
+    "@babel/preset-typescript": "^7.22.5",
     "autoprefixer": "^10.4.14",
     "babel-loader": "^9.1.2",
     "clean-webpack-plugin": "^4.0.0",
@@ -44,6 +46,7 @@
     "sass": "^1.63.6",
     "sass-loader": "^13.3.2",
     "style-loader": "^3.3.3",
+    "typescript": "^5.1.6",
     "webpack": "^5.83.1",
     "webpack-cli": "^5.1.1",
     "webpack-dev-server": "^4.15.0",

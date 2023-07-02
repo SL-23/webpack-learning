@@ -8,13 +8,7 @@ import {
   clearNewTodoInput,
 } from "./ui";
 import { capitalize } from "lodash";
-
-function trim(value) {
-  return value
-    .replace(/^\s+/, "")
-    .replace(/\s+$/, "")
-    .replace(/\s{2,}/g, " ");
-}
+import { trim } from "./helpers";
 
 export function onLoadEventHandler() {
   renderTodos(getAllTodos());

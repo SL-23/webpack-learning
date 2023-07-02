@@ -13,6 +13,9 @@ const config = {
     //   keep: /\.css/,
     // }, --> no need as clean webpack plug in doing same thing
   },
+  resolve: {
+    extensions: [".ts", ".js"],
+  },
   module: {
     rules: [
       {
@@ -24,7 +27,7 @@ const config = {
         ],
       },
       {
-        test: /\.js$/,
+        test: /\.(js|ts)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
