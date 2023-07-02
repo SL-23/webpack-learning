@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const config = {
   // default get index.js
   // absolute path!!!!
@@ -33,6 +34,13 @@ const config = {
       cleanOnceBeforeBuildPatterns: [
         "**/*",
         path.join(process.cwd(), "build/**/*"),
+      ],
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: "images/motivational-pictures/**",
+        },
       ],
     }),
   ],

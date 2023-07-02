@@ -1,6 +1,7 @@
 import initialData from "./todos.json";
 import styles from "../styles/notification.module.css";
 import CheckmarkImage from "../../images/checkmark.svg";
+import { getMotivationalPictures } from "./api";
 
 let data = initialData;
 
@@ -41,6 +42,7 @@ export function renderTodos(todos) {
         `;
   });
   document.querySelector(".todo-list").innerHTML = renderedItemArray.join("");
+  renderMotivationalPictures();
 }
 
 export function clearNewTodoInput() {
@@ -70,4 +72,22 @@ function showNotification() {
     );
     notificationElement.parentNode.removeChild(notificationElement);
   }, 2000);
+}
+
+function renderMotivationalPictures() {
+  getMotivationalPictures().then((pictures) => {
+    const motivationalPicturesHtml = `<div class="motivational-pictures">
+      ${pictures
+        .map((p) => {
+          return (
+            '<img class="header-image" src="' + p + '" alt="Motivational pic"/>'
+          );
+        })
+        .join("")}
+    </div>`;
+    const motivationalPicturesContainer = document.querySelector(
+      ".motivational-pictures-container"
+    );
+    motivationalPicturesContainer.innerHTML = motivationalPicturesHtml;
+  });
 }
