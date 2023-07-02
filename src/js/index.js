@@ -4,7 +4,7 @@ import {
   toggleTodoEventListener,
   onLoadEventHandler,
 } from "./event-handlers";
-import "../styles/index.less";
+import "../styles/index.scss";
 
 window.addEventListener("load", onLoadEventHandler);
 document.addEventListener("change", function (event) {

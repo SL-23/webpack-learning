@@ -44,10 +44,14 @@ module.exports = merge(common, {
           },
         ],
       },
-
       {
         test: /\.less$/,
         use: ["style-loader", "css-loader", "less-loader"],
+      },
+      {
+        test: /\.scss$/,
+        // order matters in this array!!!
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
