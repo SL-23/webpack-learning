@@ -57,11 +57,12 @@ export function getTodoId(element) {
 }
 
 function showNotification() {
-  const notification = `<div class="${styles.notification}">
-  To do item added
-  </div>`;
+  const notification = document.createElement("div");
+  notification.classList.add("alert", "alert-success", styles.notification);
+  notification.setAttribute("role", "alert");
+  notification.innerHTML = "Todo item added!!!";
+  document.body.appendChild(notification);
 
-  document.body.innerHTML += notification;
   setTimeout(function () {
     const notificationElement = document.querySelector(
       `.${styles.notification}`
