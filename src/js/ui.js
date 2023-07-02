@@ -1,5 +1,6 @@
 import initialData from "./todos.json";
 import styles from "../styles/notification.module.css";
+import CheckmarkImage from "../../images/checkmark.svg";
 
 let data = initialData;
 
@@ -31,7 +32,7 @@ export function renderTodos(todos) {
     return `
             <li data-id="${todo.id}" class="${className}">
                 <span class="custom-checkbox">
-                    <img class="check" src="../images/checkmark.svg" width="22" height="22"></img>
+                    <img class="check" src="${CheckmarkImage}" width="22" height="22"></img>
                     <input class="real-checkbox" type="checkbox" ${completionClass} />
                 </span>
                 <label>${todo.text}</label>
