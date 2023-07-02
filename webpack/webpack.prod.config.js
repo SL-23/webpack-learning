@@ -55,7 +55,12 @@ module.exports = merge(common, {
       {
         test: /\.scss$/,
         // order matters in this array!!!
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "postcss-loader",
+          "sass-loader",
+        ],
       },
     ],
   },
