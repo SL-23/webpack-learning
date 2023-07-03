@@ -2,6 +2,17 @@ import initialData from "./todos.json";
 import styles from "../styles/notification.module.css";
 import CheckmarkImage from "../../images/checkmark.svg";
 import { getMotivationalPictures } from "./api";
+import { css } from "@emotion/css";
+
+const realCheckboxClass = css`
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+  top: -3px;
+  left: -5px;
+`;
 
 let data = initialData;
 
@@ -34,7 +45,7 @@ export function renderTodos(todos) {
             <li data-id="${todo.id}" class="${className}">
                 <span class="custom-checkbox">
                     <img class="check" src="${CheckmarkImage}" width="22" height="22"></img>
-                    <input class="real-checkbox" type="checkbox" ${completionClass} />
+                    <input class="${realCheckboxClass}" data-element="real-checkbox" type="checkbox" ${completionClass} />
                 </span>
                 <label>${todo.text}</label>
                 <span class="delete"></span>
