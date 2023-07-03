@@ -13,6 +13,7 @@ module.exports = merge(common, {
     filename: "js/[name].[contenthash:12].js",
   },
   mode: "production",
+  devtool: "source-map",
   optimization: {
     minimize: true,
     minimizer: [
