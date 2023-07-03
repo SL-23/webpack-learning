@@ -7,7 +7,7 @@ import {
   getTodoId,
   clearNewTodoInput,
 } from "./ui";
-import { capitalize } from "lodash";
+import { capitalize } from "lodash-es";
 import { trim } from "./helpers";
 
 export function onLoadEventHandler() {
