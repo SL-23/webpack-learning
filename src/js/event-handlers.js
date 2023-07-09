@@ -9,7 +9,6 @@ import {
 } from "./ui";
 import { capitalize } from "lodash-es";
 import { trim } from "./helpers";
-import { Modal } from "bootstrap";
 import $ from "jquery";
 
 export function onLoadEventHandler() {
@@ -29,12 +28,17 @@ export function newTodoEventHandler(event) {
 }
 
 export function removeTodoEventHandler(event) {
-  const id = getTodoId(event.target);
-  $("#modal-delete-button").data("todo-id", id);
-  const deleteTodoModal = Modal.getOrCreateInstance(
-    document.getElementById("modal-delete-todo")
-  );
-  deleteTodoModal.show();
+  import(
+    "bootstrap"
+    /* webpackChunkName: "bootstrap" */
+  ).then(function ({ Modal }) {
+    const id = getTodoId(event.target);
+    $("#modal-delete-button").data("todo-id", id);
+    const deleteTodoModal = Modal.getOrCreateInstance(
+      document.getElementById("modal-delete-todo")
+    );
+    deleteTodoModal.show();
+  });
 }
 
 export function toggleTodoEventListener(event) {
@@ -45,11 +49,13 @@ export function toggleTodoEventListener(event) {
 }
 
 export function confirmRemoveEventHandler(event) {
-  const id = $("#modal-delete-button").data("todo-id");
-  removeTodo(id);
-  renderTodos(getAllTodos());
-  const deleteTodoModal = Modal.getOrCreateInstance(
-    document.getElementById("modal-delete-todo")
-  );
-  deleteTodoModal.hide();
+  import("bootstrap").then(function ({ Modal }) {
+    const id = $("#modal-delete-button").data("todo-id");
+    removeTodo(id);
+    renderTodos(getAllTodos());
+    const deleteTodoModal = Modal.getOrCreateInstance(
+      document.getElementById("modal-delete-todo")
+    );
+    deleteTodoModal.hide();
+  });
 }

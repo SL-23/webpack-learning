@@ -84,23 +84,30 @@ module.exports = merge(common, {
     splitChunks: {
       chunks: "all",
       maxSize: Infinity,
-      minSize: 0,
+      minSize: 2000,
       cacheGroups: {
         jquery: {
           test: /[\\/]node_modules[\\/]jquery[\\/]/,
           name: "jquery",
-        },
-        bootstrap: {
-          test: /[\\/]node_modules[\\/]bootstrap[\\/]/,
-          name: "bootstrap",
+          // give them higher priority, so that it has higher priority than node_modules
+          priority: 2,
         },
         lodash: {
           test: /[\\/]node_modules[\\/]lodash-es[\\/]/,
           name: "lodash-es",
+          priority: 2,
         },
         node_modules: {
           test: /[\\/]node_modules[\\/]/,
           name: "node_modules",
+          chunks: "initial",
+        },
+        async: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: "async",
+          name(module, chunks) {
+            return chunks.map((chunk) => chunk.name).join("-");
+          },
         },
       },
     },
