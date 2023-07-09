@@ -82,17 +82,12 @@ module.exports = merge(common, {
       }),
     ],
     splitChunks: {
-      cacheGroups: {
-        bootstrap: {
-          test: /[\\/]node_modules[\\/]bootstrap[\\/]/,
-          chunks: "initial",
-          name: "bootstrap",
-        },
-        jquery: {
-          test: /[\\/]node_modules[\\/]jquery[\\/]/,
-          chunks: "initial",
-          name: "jquery",
-        },
+      chunks: "all",
+      maxSize: 140000,
+      minSize: 50000,
+      name(module, chunks, cacheGroupKey) {
+        const filePathAsArray = module.identifier().split("/");
+        return filePathAsArray[filePathAsArray.length - 1];
       },
     },
   },
