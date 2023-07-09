@@ -83,11 +83,13 @@ module.exports = merge(common, {
     ],
     splitChunks: {
       chunks: "all",
-      maxSize: 140000,
-      minSize: 50000,
-      name(module, chunks, cacheGroupKey) {
-        const filePathAsArray = module.identifier().split("/");
-        return filePathAsArray[filePathAsArray.length - 1];
+      maxSize: Infinity,
+      minSize: 0,
+      cacheGroups: {
+        node_modules: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "node_modules",
+        },
       },
     },
   },
