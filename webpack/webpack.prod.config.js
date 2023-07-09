@@ -86,14 +86,21 @@ module.exports = merge(common, {
       maxSize: Infinity,
       minSize: 0,
       cacheGroups: {
+        jquery: {
+          test: /[\\/]node_modules[\\/]jquery[\\/]/,
+          name: "jquery",
+        },
+        bootstrap: {
+          test: /[\\/]node_modules[\\/]bootstrap[\\/]/,
+          name: "bootstrap",
+        },
+        lodash: {
+          test: /[\\/]node_modules[\\/]lodash-es[\\/]/,
+          name: "lodash-es",
+        },
         node_modules: {
           test: /[\\/]node_modules[\\/]/,
-          name(module) {
-            const packageName = module.context.match(
-              /[\\/]node_modules[\\/](.*?)([\\/]|$)/
-            )[1];
-            return packageName;
-          },
+          name: "node_modules",
         },
       },
     },
