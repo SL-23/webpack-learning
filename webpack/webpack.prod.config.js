@@ -81,6 +81,20 @@ module.exports = merge(common, {
         ],
       }),
     ],
+    splitChunks: {
+      cacheGroups: {
+        bootstrap: {
+          test: /[\\/]node_modules[\\/]bootstrap[\\/]/,
+          chunks: "initial",
+          name: "bootstrap",
+        },
+        jquery: {
+          test: /[\\/]node_modules[\\/]jquery[\\/]/,
+          chunks: "initial",
+          name: "jquery",
+        },
+      },
+    },
   },
   module: {
     rules: [

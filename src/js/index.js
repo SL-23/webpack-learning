@@ -25,5 +25,3 @@ document.addEventListener("click", function (event) {
     confirmRemoveEventHandler(event);
   }
 });
-
-console.log("hello world");
