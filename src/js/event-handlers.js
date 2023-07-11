@@ -54,7 +54,7 @@ export function toggleTodoEventListener(event) {
 }
 
 export async function confirmRemoveEventHandler(event) {
-  const [{ Modal }, { default: $ }] = Promise.all([
+  const [{ Modal }, { default: $ }] = await Promise.all([
     import("bootstrap"),
     import("jquery"),
   ]);
