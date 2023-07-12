@@ -4,6 +4,7 @@ const path = require("path");
 module.exports = merge(common, {
   output: {
     filename: "bundle.js",
+    publicPath: "/static/",
   },
   mode: "development",
   devtool: "eval-source-map",
