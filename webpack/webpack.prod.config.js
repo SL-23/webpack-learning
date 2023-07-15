@@ -126,8 +126,15 @@ module.exports = merge(common, {
       }),
     }),
     new CompressionPlugin({
+      filename: "[path][base].gz",
       algorithm: "gzip",
       test: /\.(js|css)$/,
+    }),
+    new CompressionPlugin({
+      algorithm: "brotliCompress",
+      filename: "[path][base].br",
+      test: /\.(js|css)$/,
+      compressionOptions: { level: 11 },
     }),
   ],
 });

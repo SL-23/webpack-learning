@@ -21,7 +21,13 @@ app.get("/", function (req, res) {
   res.sendFile(absolutePathToHtmlFile);
 });
 
-app.use("/static", expressStaticGzip(path.resolve(__dirname, "../dist")));
+app.use(
+  "/static",
+  expressStaticGzip(path.resolve(__dirname, "../dist"), {
+    enableBrotli: true,
+    orderPreference: ["br", "gz"],
+  })
+);
 
 app.listen(3000, function () {
   console.log("Application is running on localhost:3000");
