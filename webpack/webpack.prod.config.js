@@ -8,6 +8,7 @@ const path = require("path");
 const glob = require("glob");
 
 module.exports = merge(common, {
+  entry: "./src/js/index.js",
   output: {
     filename: "js/[name].[contenthash:12].js",
     publicPath: "/static/",

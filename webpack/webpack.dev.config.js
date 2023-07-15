@@ -1,7 +1,10 @@
 const common = require("./webpack.common.config.js");
 const { merge } = require("webpack-merge");
 const path = require("path");
+const webpack = require("webpack");
+
 module.exports = merge(common, {
+  entry: "./src/js/index-dev.js",
   output: {
     filename: "bundle.js",
     publicPath: "/static/",
@@ -56,7 +59,7 @@ module.exports = merge(common, {
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
-        test: /\.(png|jpg|svg)$/,
+        test: /\.*\.(png|jpg|svg)$/,
         type: "asset",
         parser: {
           dataUrlCondition: {
@@ -64,9 +67,10 @@ module.exports = merge(common, {
           },
         },
         generator: {
-          filename: "./images/[name][ext]",
+          filename: "./images/[name].[contenthash:12][ext]",
         },
       },
     ],
   },
+  plugins: [new webpack.HotModuleReplacementPlugin()],
 });

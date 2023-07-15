@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "cross-env BABEL_ENV=production npx webpack --config webpack/webpack.prod.config.js",
-    "dev": " NODE_ENV=dev node src/server.js",
+    "dev": "cross-env NODE_ENV=dev node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "typecheck": "tsc --noEmit",
     "bundle-analyzer": "NODE_ENV=production webpack --config webpack/webpack.analyze.config.js",
@@ -56,6 +56,7 @@
     "webpack-cli": "^5.1.1",
     "webpack-dev-middleware": "^6.1.1",
     "webpack-dev-server": "^4.15.0",
+    "webpack-hot-middleware": "^2.25.4",
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
