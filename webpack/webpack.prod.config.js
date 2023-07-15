@@ -3,6 +3,7 @@ const { merge } = require("webpack-merge");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const { PurgeCSSPlugin } = require("purgecss-webpack-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 
 const path = require("path");
 const glob = require("glob");
@@ -123,6 +124,10 @@ module.exports = merge(common, {
       paths: glob.sync(`${path.join(__dirname, "../src")}/**/*`, {
         nodir: true,
       }),
+    }),
+    new CompressionPlugin({
+      algorithm: "gzip",
+      test: /\.(js|css)$/,
     }),
   ],
 });

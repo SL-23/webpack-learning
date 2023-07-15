@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const app = express();
+const expressStaticGzip = require("express-static-gzip");
 
 if (process.env.NODE_ENV === "dev") {
   console.log("Dev mode");
@@ -20,7 +21,7 @@ app.get("/", function (req, res) {
   res.sendFile(absolutePathToHtmlFile);
 });
 
-app.use("/static", express.static(path.resolve(__dirname, "../dist")));
+app.use("/static", expressStaticGzip(path.resolve(__dirname, "../dist")));
 
 app.listen(3000, function () {
   console.log("Application is running on localhost:3000");
